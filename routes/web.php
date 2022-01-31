@@ -20,3 +20,7 @@ Route::get('/comics/{id}', 'HomeController@show') -> name('comic');
 Route::get('/create', 'HomeController@create') -> name('create');
 
 Route::post('/store', 'HomeController@store') -> name('store');
+
+Route::get('/edit/{id}', 'HomeController@edit') -> name('edit');
+
+Route::post('/update', 'HomeController@update') -> name('update');

@@ -33,4 +33,8 @@ class HomeController extends Controller
 
         return redirect() -> route('comic', $newMovie -> id);
     }
+
+    public function edit($id) {
+        return view('edit', ['comic' => Comic::findOrFail($id)]);
+    }
 }
