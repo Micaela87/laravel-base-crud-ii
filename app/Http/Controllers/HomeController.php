@@ -29,12 +29,27 @@ class HomeController extends Controller
             'pages' => 'required|numeric|max:255'
         ]);
 
-        $newMovie = Comic::create($data);
+        $newComic = Comic::create($data);
 
-        return redirect() -> route('comic', $newMovie -> id);
+        return redirect() -> route('comic', $newComic -> id);
     }
 
     public function edit($id) {
         return view('edit', ['comic' => Comic::findOrFail($id)]);
+    }
+
+    public function update(Request $request, $id) {
+
+        $data = $request -> validate([
+            'title' => 'required|unique:comics|max:255',
+            'author' => 'required|max:255',
+            'release_date' => 'required|date',
+            'pages' => 'required|numeric|max:255'
+        ]);
+
+        $updatedComic = Comic::findOrFail($id);
+        $updatedComic -> update($data);
+
+        return redirect() -> route('comic', $updatedComic -> id);
     }
 }
