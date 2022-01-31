@@ -52,4 +52,12 @@ class HomeController extends Controller
 
         return redirect() -> route('comic', $updatedComic -> id);
     }
+
+    public function delete($id) {
+
+        $comicTodelete = Comic::findOrFail($id);
+        $comicTodelete -> delete();
+
+        return back();
+    }
 }

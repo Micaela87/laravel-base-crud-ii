@@ -10,7 +10,11 @@
     <h1>Comics currently available</h1>
     <ul>
         @foreach ($comics as $comic)
-            <li><a href="{{ route('comic', $comic -> id) }}">{{ $comic -> title }}</a> : {{ $comic -> author }} <a href="{{ route('edit', $comic -> id) }}">Edit</a></li>
+            <li>
+                <a href="{{ route('comic', $comic -> id) }}">{{ $comic -> title }}</a> : {{ $comic -> author }} 
+                <a href="{{ route('edit', $comic -> id) }}">Edit</a>
+                <a href="{{ route('delete', $comic -> id) }}">Delete</a>
+            </li>
         @endforeach
     </ul>
     <h2><a href="{{ route('create') }}">Add a Comic</a></h2>
